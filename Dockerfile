@@ -18,6 +18,13 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu \
     && pip install --no-cache-dir -r requirements.txt
 
+# Pre-download the embedding + reranker models into the image so the first
+# query doesn't pay a cold-start download (and the container needs no network
+# for them at runtime).
+RUN python -c "from sentence_transformers import SentenceTransformer, CrossEncoder; \
+SentenceTransformer('all-MiniLM-L6-v2'); \
+CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')"
+
 COPY . .
 
 EXPOSE 8000

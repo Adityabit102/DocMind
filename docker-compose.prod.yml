@@ -1,0 +1,44 @@
+# Production overlay — run alongside the base compose file:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+#
+# Adds a Caddy reverse proxy (auto-HTTPS on one domain), stops exposing the
+# backend/frontend ports directly, and points the frontend at the public domain.
+# Set DOMAIN in your .env (e.g. DOMAIN=docmind.example.com) and edit
+# deploy/Caddyfile to match.
+
+services:
+  backend:
+    ports: [] # not public; reached via Caddy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      args:
+        # Same-origin: the browser hits https://<DOMAIN>/api/... which Caddy
+        # routes to the backend. No CORS needed.
+        NEXT_PUBLIC_API_URL: https://${DOMAIN}
+    ports: [] # not public; reached via Caddy
+    restart: unless-stopped
+
+  redis:
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  caddy_data:
+  caddy_config:
