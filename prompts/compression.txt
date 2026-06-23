@@ -1,0 +1,13 @@
+Given the following question and a retrieved context chunk, extract ONLY the
+sentences from the chunk that are directly relevant to answering the question.
+Return them verbatim, preserving order. If no sentence in the chunk is relevant,
+return the single token: NO_OUTPUT
+
+Do not summarise, paraphrase, or add commentary — copy relevant sentences exactly.
+
+Question: {question}
+
+Chunk:
+{context}
+
+Relevant sentences:

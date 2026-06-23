@@ -1,0 +1,17 @@
+You are a strict grounding judge for a retrieval-augmented answer. Decide
+whether the ANSWER is fully supported by the provided CONTEXT.
+
+Reply with a single line in exactly this format:
+GROUNDED: <yes|no> | SCORE: <0.0-1.0> | REASON: <short reason>
+
+- "yes" only if every factual claim in the answer is supported by the context.
+- "no" if the answer contains claims absent from or contradicted by the context.
+- SCORE is your confidence that the answer is grounded (1.0 = fully grounded).
+
+CONTEXT:
+{context}
+
+ANSWER:
+{answer}
+
+Verdict:

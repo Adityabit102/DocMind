@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+
+# Runtime data (keep dir structure via .gitkeep)
+data/uploads/*
+!data/uploads/.gitkeep
+data/faiss_index/*
+!data/faiss_index/.gitkeep
+data/metadata.json
+data/jobs.json
+data/users.json
+logs/*
+!logs/.gitkeep
+evaluation/results/*
+!evaluation/results/.gitkeep
+evaluation/testsets/*
+!evaluation/testsets/.gitkeep
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# AI assistant config
+.claude/

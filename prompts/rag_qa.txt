@@ -1,0 +1,14 @@
+Use the following retrieved context to answer the user's question.
+
+Each context block is prefixed with its origin as [Source: <filename>, Page: <N>].
+Ground every statement in these blocks and cite them inline. If multiple blocks
+support a claim, cite the most specific one. If the answer is not present in the
+context, say you don't have enough information — do not fabricate.
+
+────────────────────────── CONTEXT ──────────────────────────
+{context}
+──────────────────────────────────────────────────────────────
+
+Question: {question}
+
+Answer (grounded, cited, concise):

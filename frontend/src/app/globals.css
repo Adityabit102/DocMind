@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * DocMind global styles.
+ * Flat ink-on-paper aesthetic — no gradients, no frosted glass, no neon glows.
+ * Solid fills, crisp 1px borders, a subtle paper grain, editorial serif display.
+ */
+:root {
+  --ink: #92836c;
+  --clay: #a8957f;
+  --sand: #c8bba9;
+  --cream: #ecdcc4;
+  --paper: #f7f1e9;
+  --ink-900: #4a4031;
+  --ink-700: #6b5f4a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink-900);
+  background-color: var(--paper);
+  /* faint paper grain (flat dots, not a gradient sheen) */
+  background-image: radial-gradient(rgba(146, 131, 108, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink-900);
+  }
+}
+
+@layer components {
+  /* Solid card — flat fill, hard border, paper shadow. No backdrop blur. */
+  .card {
+    @apply rounded-xl2 border border-sand bg-paper shadow-paper
+           transition-[box-shadow,transform,border-color] duration-300 ease-out;
+  }
+  .card-cream {
+    @apply rounded-xl2 border border-sand bg-cream shadow-paper
+           transition-[box-shadow,transform,border-color] duration-300 ease-out;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-900
+           bg-ink-900 px-6 py-3 font-medium text-paper transition-transform
+           hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink
+           bg-transparent px-6 py-3 font-medium text-ink-900 transition-colors hover:bg-cream;
+  }
+  .input {
+    @apply w-full rounded-xl2 border border-sand bg-paper px-4 py-3 text-ink-900
+           outline-none placeholder:text-clay focus:border-ink;
+  }
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-clay;
+  }
+  .tag {
+    @apply inline-flex items-center rounded-full border border-sand bg-cream px-3 py-1
+           font-mono text-xs text-ink-700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grain-divider {
+    height: 1px;
+    background-color: var(--sand);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 8px;
+  border: 2px solid var(--paper);
+}
+
+/* Scoped scrollbar for in-page scroll regions (chat + sidebar) — thinner and
+ * quieter than the page scrollbar so the panel reads as its own surface. */
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sand) transparent;
+  scrollbar-gutter: stable;
+}
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 6px;
+  border: none;
+}
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--clay);
+}
+
+/* Flash a source card when a citation in the answer is clicked. */
+.source-flash {
+  animation: source-flash 1.4s ease-out;
+}
+@keyframes source-flash {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  20% {
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

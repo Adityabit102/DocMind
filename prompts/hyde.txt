@@ -1,0 +1,8 @@
+Write a short, factual passage (3-5 sentences) that would plausibly appear in a
+document and that directly answers the question below. Do not hedge, do not say
+you are unsure — write it as if it were an authoritative excerpt from a source
+document. This hypothetical passage will be embedded and used to improve retrieval.
+
+Question: {question}
+
+Hypothetical answer passage:
