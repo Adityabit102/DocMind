@@ -116,6 +116,10 @@ def _process(job_id: str) -> None:
                 document_id=record.id,
                 progress=1.0,
             )
+            # Persist the new index/upload to the HF dataset (no-op if disabled).
+            from rag.persistence import hf_sync
+
+            hf_sync.push_async(f"ingest {record.filename}")
     except Exception as exc:  # noqa: BLE001 — record failure, keep worker alive
         logger.warning("Ingestion job %s failed: %s", job_id, exc)
         _update(job_id, status=JobStatus.FAILED, error=str(exc), progress=1.0)

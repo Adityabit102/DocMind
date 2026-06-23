@@ -124,6 +124,9 @@ def remove_document(
         _authorize(registry[doc_id], user)
     if not delete_document(doc_id, store):
         raise HTTPException(status_code=404, detail="Document not found")
+    from rag.persistence import hf_sync
+
+    hf_sync.push_async("delete")
     return {"status": "deleted", "id": doc_id}
 
 

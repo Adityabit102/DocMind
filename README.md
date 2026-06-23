@@ -1,3 +1,16 @@
+---
+title: DocMind
+emoji: 📄
+colorFrom: yellow
+colorTo: gray
+sdk: docker
+app_port: 8000
+pinned: false
+---
+
+<!-- The YAML block above configures Hugging Face Spaces (Docker SDK). It is
+     ignored by normal Markdown viewers and safe to keep in the repo. -->
+
 # DocMind — AI-Powered RAG Document Q&A System
 
 DocMind ingests your documents (PDF, DOCX, TXT, MD, CSV, HTML) and answers

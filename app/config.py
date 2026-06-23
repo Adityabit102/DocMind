@@ -98,6 +98,11 @@ class Settings(BaseSettings):
     # ── Storage ──────────────────────────────────────────────────────
     upload_dir: str = "data/uploads"
     faiss_index_dir: str = "data/faiss_index"
+    data_dir: str = "data"
+    # Persist the data/ dir to a (private) HuggingFace dataset so it survives
+    # ephemeral hosts like HF Spaces. Both must be set to enable sync.
+    hf_token: str = ""
+    hf_dataset_repo: str = ""  # e.g. "username/docmind-data"
     eval_results_dir: str = "evaluation/results"
     eval_testset_dir: str = "evaluation/testsets"
     metadata_file: str = "data/metadata.json"
@@ -134,6 +139,10 @@ class Settings(BaseSettings):
     @property
     def has_groq(self) -> bool:
         return bool(self.groq_api_key)
+
+    @property
+    def has_hf_sync(self) -> bool:
+        return bool(self.hf_token and self.hf_dataset_repo)
 
     @property
     def effective_embedding_provider(self) -> EmbeddingProvider:

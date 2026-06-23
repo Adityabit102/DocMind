@@ -48,6 +48,13 @@ async def lifespan(app: FastAPI):  # type: ignore[no-untyped-def]
     """Startup: configure logging, load the index, install the semantic cache."""
     configure_logging()
     _setup_langsmith()
+    # Restore persisted state (FAISS index, uploads, registry) before loading it.
+    try:
+        from rag.persistence import hf_sync
+
+        hf_sync.pull()
+    except Exception as exc:  # noqa: BLE001 — persistence is best-effort
+        logger.warning("Data restore unavailable: %s", exc)
     init_state()
     try:
         from app.dependencies import get_store
@@ -76,6 +83,12 @@ async def lifespan(app: FastAPI):  # type: ignore[no-untyped-def]
 
         stop_scheduler()
     except Exception:  # noqa: BLE001
+        pass
+    try:
+        from rag.persistence import hf_sync
+
+        hf_sync.push("shutdown")
+    except Exception:  # noqa: BLE001 — best-effort final flush
         pass
     logger.info("DocMind backend shutting down")
 
