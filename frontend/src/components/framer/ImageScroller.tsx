@@ -14,11 +14,17 @@ export function ImageScroller({
   items: string[];
   duration?: number;
 }) {
-  const loop = [...items, ...items];
+  // Build one "set" wide enough to overflow even ultrawide screens by repeating
+  // the items, then render it twice and slide by exactly one set width (-50%).
+  // This guarantees a seamless loop with no gap: as set A scrolls off the left,
+  // the identical set B is already filling the right.
+  const REPEAT = 5;
+  const set = Array.from({ length: REPEAT }, () => items).flat();
+  const loop = [...set, ...set];
   // Soft edge fade (alpha mask, not a colour box) so the pills dissolve into
   // whatever is behind them at the screen edges — complements any background.
   const fade =
-    "linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%)";
+    "linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%)";
   return (
     <div
       className="group relative w-full overflow-hidden py-2"
@@ -27,7 +33,7 @@ export function ImageScroller({
       <motion.div
         className="flex w-max gap-3"
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration, ease: "linear", repeat: Infinity }}
+        transition={{ duration: duration * REPEAT, ease: "linear", repeat: Infinity }}
         style={{ willChange: "transform" }}
       >
         {loop.map((item, i) => (
