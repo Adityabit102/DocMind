@@ -25,7 +25,7 @@ export function ProjectHoverCard({
       animate="rest"
       variants={{ rest: { y: 0 }, hover: { y: -6 } }}
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
-      className="card relative overflow-hidden p-6"
+      className="card relative h-full overflow-hidden p-6"
     >
       <div className="flex items-start justify-between">
         <span className="font-mono text-xs text-clay">{index}</span>

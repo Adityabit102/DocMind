@@ -15,11 +15,15 @@ export function ImageScroller({
   duration?: number;
 }) {
   const loop = [...items, ...items];
+  // Soft edge fade (alpha mask, not a colour box) so the pills dissolve into
+  // whatever is behind them at the screen edges — complements any background.
+  const fade =
+    "linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%)";
   return (
-    <div className="group relative overflow-hidden py-2">
-      {/* solid edge masks (flat, not gradient) */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-paper" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-paper" />
+    <div
+      className="group relative w-full overflow-hidden py-2"
+      style={{ maskImage: fade, WebkitMaskImage: fade }}
+    >
       <motion.div
         className="flex w-max gap-3"
         animate={{ x: ["0%", "-50%"] }}

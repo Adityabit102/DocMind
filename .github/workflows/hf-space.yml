@@ -1,0 +1,25 @@
+name: Deploy to Hugging Face Space
+
+# Mirrors every push to main onto the HF Space, which then rebuilds itself.
+# One-time setup: add a repo secret HF_TOKEN (a HuggingFace *write* token) under
+#   GitHub repo -> Settings -> Secrets and variables -> Actions -> New secret.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  sync-to-space:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push to HF Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push --force \
+            "https://adityabit102:${HF_TOKEN}@huggingface.co/spaces/adityabit102/docmind" \
+            HEAD:main

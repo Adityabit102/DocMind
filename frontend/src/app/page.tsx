@@ -52,8 +52,9 @@ export default function Home() {
       <section className="border-y border-sand bg-cream/40 py-6">
         <div className="mx-auto max-w-7xl px-5">
           <p className="eyebrow mb-3">Ingests anything you throw at it</p>
-          <ImageScroller items={FORMATS} />
         </div>
+        {/* full-bleed so the edge fade lands at the screen edges */}
+        <ImageScroller items={FORMATS} />
       </section>
 
       {/* ── Feature grid ─────────────────────────────────────── */}
@@ -64,9 +65,9 @@ export default function Home() {
             Production RAG, not a notebook demo
           </h2>
         </Reveal>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f, i) => (
-            <Reveal key={f.index} delay={i * 0.05}>
+            <Reveal key={f.index} delay={i * 0.05} className="h-full">
               <ProjectHoverCard {...f} />
             </Reveal>
           ))}
