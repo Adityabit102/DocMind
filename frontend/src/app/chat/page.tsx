@@ -38,6 +38,9 @@ export default function ChatPage() {
   // suggested follow-ups for the latest answer
   const [followups, setFollowups] = useState<string[]>([]);
 
+  // mobile: the controls sidebar is collapsed behind a toggle (always shown on lg)
+  const [showControls, setShowControls] = useState(false);
+
   const endRef = useRef<HTMLDivElement>(null);
   const prevTurns = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
@@ -221,9 +224,27 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="mx-auto grid max-w-7xl gap-6 px-5 py-6 lg:h-[calc(100vh-5.5rem)] lg:grid-cols-[280px_1fr]">
-      {/* ── Controls sidebar ─────────────────────────────── */}
-      <aside className="card h-fit p-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto chat-scroll">
+    <div className="mx-auto max-w-7xl px-5 py-6 lg:h-[calc(100vh-5.5rem)]">
+      {/* Mobile-only toggle for the controls sidebar */}
+      <button
+        onClick={() => setShowControls((v) => !v)}
+        className="mb-4 flex w-full items-center justify-between rounded-xl2 border border-sand bg-paper px-4 py-3 lg:hidden"
+      >
+        <span className="text-sm text-ink-900">Chats &amp; retrieval controls</span>
+        <motion.span animate={{ rotate: showControls ? 180 : 0 }} className="text-ink">
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2}>
+            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.span>
+      </button>
+
+      <div className="grid gap-6 lg:h-full lg:grid-cols-[280px_1fr]">
+        {/* ── Controls sidebar ─────────────────────────────── */}
+        <aside
+          className={`card h-fit p-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto chat-scroll ${
+            showControls ? "block" : "hidden"
+          } lg:block`}
+        >
         {/* ── Chat history ───────────────────────────────── */}
         <ChatHistory
           conversations={conversations}
@@ -424,6 +445,7 @@ export default function ChatPage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }

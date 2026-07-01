@@ -176,9 +176,9 @@ export default function DocumentsPage() {
         />
       </div>
 
-      {/* Table */}
-      <div className="mt-4 overflow-hidden rounded-xl2 border border-sand">
-        <table className="w-full text-left text-sm">
+      {/* Table (scrolls horizontally on narrow screens) */}
+      <div className="mt-4 overflow-x-auto rounded-xl2 border border-sand">
+        <table className="w-full min-w-[640px] text-left text-sm">
           <thead className="bg-cream font-mono text-xs uppercase tracking-wider text-ink-700">
             <tr>
               <th className="px-4 py-3">Name</th>
