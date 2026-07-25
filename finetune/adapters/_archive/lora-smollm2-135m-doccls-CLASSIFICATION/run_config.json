@@ -1,0 +1,38 @@
+{
+  "run_name": "lora-smollm2-135m-doccls",
+  "base_model": "HuggingFaceTB/SmolLM2-135M",
+  "lora": {
+    "r": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "trainable_params": 2442240,
+    "total_params": 136957248,
+    "trainable_pct": 1.7832
+  },
+  "training": {
+    "epochs": 3.0,
+    "max_steps": -1,
+    "batch_size": 8,
+    "grad_accum": 1,
+    "lr": 0.0002,
+    "max_len": 320,
+    "seed": 42,
+    "device": "cpu",
+    "train_seconds": 723.7
+  },
+  "final_train_loss": 0.0015682080760598184,
+  "final_eval_loss": 0.0016889555845409632,
+  "val_task_metrics": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0
+  }
+}

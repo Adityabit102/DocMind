@@ -1,0 +1,38 @@
+{
+  "baseline_ocr": {
+    "engine": "baseline_ocr",
+    "n_images": 8,
+    "n_fields": 48,
+    "exact_field_accuracy": 0.9791666666666666,
+    "doc_exact_match": 0.875,
+    "precision": 0.9791666666666666,
+    "recall": 1.0,
+    "f1": 0.9894736842105264,
+    "per_field_accuracy": {
+      "Invoice No": 0.875,
+      "Date": 1.0,
+      "Vendor": 1.0,
+      "Bill To": 1.0,
+      "City": 1.0,
+      "Total": 1.0
+    }
+  },
+  "layout_ocr+": {
+    "engine": "layout_ocr+",
+    "n_images": 8,
+    "n_fields": 48,
+    "exact_field_accuracy": 0.9791666666666666,
+    "doc_exact_match": 0.875,
+    "precision": 0.9791666666666666,
+    "recall": 1.0,
+    "f1": 0.9894736842105264,
+    "per_field_accuracy": {
+      "Invoice No": 0.875,
+      "Date": 1.0,
+      "Vendor": 1.0,
+      "Bill To": 1.0,
+      "City": 1.0,
+      "Total": 1.0
+    }
+  }
+}

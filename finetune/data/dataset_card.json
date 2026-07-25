@@ -1,0 +1,67 @@
+{
+  "task": "document extractive QA (7 question types, with in-document distractors)",
+  "question_types": [
+    "total",
+    "sender",
+    "latest_date",
+    "earliest_date",
+    "max_lineitem",
+    "num_items",
+    "priciest_item"
+  ],
+  "doc_styles": [
+    "invoice",
+    "purchase_order",
+    "quote"
+  ],
+  "generation": {
+    "n_docs": 120,
+    "qa_pairs": 840,
+    "seed": 42,
+    "synthetic_templated": true
+  },
+  "difficulty": "each doc embeds decoy dates/amounts/names so the model must disambiguate which value the question targets",
+  "split_methodology": "grouped-by-document + stratified-by-style, 70/15/15",
+  "metric": "exact-match (EM) + token-level F1 (SQuAD-style)",
+  "leakage_check": {
+    "exact_cross_split_context_overlaps": 0,
+    "near_duplicate_context_pairs_ge_0.9_jaccard": 0,
+    "passed": true
+  },
+  "counts": {
+    "per_split": {
+      "test": 126,
+      "train": 588,
+      "val": 126
+    },
+    "per_qtype": {
+      "test": {
+        "priciest_item": 18,
+        "max_lineitem": 18,
+        "earliest_date": 18,
+        "total": 18,
+        "num_items": 18,
+        "sender": 18,
+        "latest_date": 18
+      },
+      "train": {
+        "priciest_item": 84,
+        "total": 84,
+        "latest_date": 84,
+        "earliest_date": 84,
+        "sender": 84,
+        "max_lineitem": 84,
+        "num_items": 84
+      },
+      "val": {
+        "max_lineitem": 18,
+        "priciest_item": 18,
+        "num_items": 18,
+        "total": 18,
+        "latest_date": 18,
+        "sender": 18,
+        "earliest_date": 18
+      }
+    }
+  }
+}

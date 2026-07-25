@@ -1,0 +1,29 @@
+{
+  "engine": "donut-base-finetuned-cord-v2 (zero-shot, not fine-tuned)",
+  "images": 12,
+  "total_fields": 72,
+  "raw_value_recall": 0.653,
+  "schema_aligned_field_accuracy": 0.0,
+  "raw_hits": 47,
+  "schema_hits": 0,
+  "interpretation": "Donut's OCR reads a majority of values but tags them under the CORD receipt schema, so they never align to this form's field names -> schema mismatch, not OCR failure.",
+  "example": {
+    "file": "form_000.png",
+    "gold": {
+      "Invoice No": "INV-52445",
+      "Date": "2026-03-13",
+      "Vendor": "Sunfield Grocers",
+      "Bill To": "Liam Nakamura",
+      "City": "Austin",
+      "Total": "$8829.12"
+    },
+    "mapped_to_our_schema": {
+      "Invoice No": "",
+      "Date": "Sunfield Grocers      Liam Nakamura   $8829.12     $8829.12   for your business.",
+      "Vendor": "",
+      "Bill To": "",
+      "City": "",
+      "Total": ""
+    }
+  }
+}

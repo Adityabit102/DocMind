@@ -1,0 +1,564 @@
+{
+  "generated_at": "2026-07-25 01:39:36",
+  "severities": [
+    0.0,
+    0.3,
+    0.6,
+    0.9
+  ],
+  "llm": {
+    "base_model": "HuggingFaceTB/SmolLM2-135M",
+    "adapter_dir": "finetune/adapters/lora-smollm2-135m-doccls",
+    "n_test": 36,
+    "severities": [
+      0.0,
+      0.3,
+      0.6,
+      0.9
+    ],
+    "clean": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0
+    },
+    "degradation_curves": {
+      "ocr_substitution": [
+        {
+          "severity": 0.0,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.3,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.6,
+          "accuracy": 0.75,
+          "macro_f1": 0.7283
+        },
+        {
+          "severity": 0.9,
+          "accuracy": 0.4167,
+          "macro_f1": 0.3134
+        }
+      ],
+      "drop_words": [
+        {
+          "severity": 0.0,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.3,
+          "accuracy": 0.9444,
+          "macro_f1": 0.9524
+        },
+        {
+          "severity": 0.6,
+          "accuracy": 0.8056,
+          "macro_f1": 0.8245
+        },
+        {
+          "severity": 0.9,
+          "accuracy": 0.75,
+          "macro_f1": 0.7618
+        }
+      ],
+      "truncate": [
+        {
+          "severity": 0.0,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.3,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.6,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.9,
+          "accuracy": 0.8889,
+          "macro_f1": 0.8963
+        }
+      ],
+      "keyboard_typos": [
+        {
+          "severity": 0.0,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.3,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        {
+          "severity": 0.6,
+          "accuracy": 0.8056,
+          "macro_f1": 0.6968
+        },
+        {
+          "severity": 0.9,
+          "accuracy": 0.5,
+          "macro_f1": 0.3555
+        }
+      ]
+    },
+    "special_sets": {
+      "distribution_shift": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "n": 36
+      },
+      "adversarial_lite": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "n": 18
+      }
+    }
+  },
+  "vlm": {
+    "engines": [
+      "baseline_ocr",
+      "layout_ocr+",
+      "donut_vlm"
+    ],
+    "n_images": 12,
+    "severities": [
+      0.0,
+      0.3,
+      0.6,
+      0.9
+    ],
+    "clean": {
+      "baseline_ocr": {
+        "field_accuracy": 0.9861,
+        "f1": 0.993
+      },
+      "layout_ocr+": {
+        "field_accuracy": 0.8889,
+        "f1": 0.9412
+      },
+      "donut_vlm": {
+        "field_accuracy": 0.0,
+        "f1": 0.0
+      }
+    },
+    "degradation_curves": {
+      "blur": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.7917,
+            "f1": 0.8837
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.75,
+            "f1": 0.8571
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "donut_vlm": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.0278,
+            "f1": 0.0541
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ]
+      },
+      "rotate": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9722,
+            "f1": 0.9859
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9722,
+            "f1": 0.9859
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          }
+        ],
+        "donut_vlm": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          }
+        ]
+      },
+      "skew": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9444,
+            "f1": 0.9714
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.8056,
+            "f1": 0.8923
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.5,
+            "f1": 0.6667
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.8333,
+            "f1": 0.9091
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.4722,
+            "f1": 0.6415
+          }
+        ],
+        "donut_vlm": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ]
+      },
+      "downscale": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9722,
+            "f1": 0.9859
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.375,
+            "f1": 0.5455
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.3611,
+            "f1": 0.5306
+          }
+        ],
+        "donut_vlm": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ]
+      },
+      "jpeg": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9583,
+            "f1": 0.9787
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.9306,
+            "f1": 0.964
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9306,
+            "f1": 0.964
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.9167,
+            "f1": 0.9565
+          }
+        ],
+        "donut_vlm": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          }
+        ]
+      },
+      "pixel_noise": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9861,
+            "f1": 0.993
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9167,
+            "f1": 0.9565
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9028,
+            "f1": 0.9489
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8889,
+            "f1": 0.9412
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.875,
+            "f1": 0.9333
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.7639,
+            "f1": 0.8661
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.3056,
+            "f1": 0.4681
+          }
+        ],
+        "donut_vlm": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.0139,
+            "f1": 0.0274
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

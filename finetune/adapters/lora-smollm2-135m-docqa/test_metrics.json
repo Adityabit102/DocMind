@@ -1,0 +1,909 @@
+{
+  "metrics": {
+    "exact_match": 0.5634920634920635,
+    "token_f1": 0.5698412698412698,
+    "support": 126,
+    "per_qtype_em": {
+      "total": 0.944,
+      "sender": 1.0,
+      "latest_date": 0.5,
+      "earliest_date": 0.444,
+      "max_lineitem": 0.667,
+      "num_items": 0.167,
+      "priciest_item": 0.222
+    },
+    "per_qtype_f1": {
+      "total": 0.944,
+      "sender": 1.0,
+      "latest_date": 0.5,
+      "earliest_date": 0.444,
+      "max_lineitem": 0.667,
+      "num_items": 0.167,
+      "priciest_item": 0.267
+    }
+  },
+  "predictions": [
+    {
+      "group_id": "invoice-0087",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Ergonomic chair",
+      "pred": "USB-C hub"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$694.11",
+      "pred": "$694.11"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-01-10",
+      "pred": "2026-01-10"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$968.01",
+      "pred": "$968.01"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-03-12",
+      "pred": "2026-11-17"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$963.93",
+      "pred": "$963.93"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-09-08",
+      "pred": "2026-11-11"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$7342.11",
+      "pred": "$7342.11"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "USB-C hub",
+      "pred": "USB-C hub"
+    },
+    {
+      "group_id": "invoice-0087",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-03-08",
+      "pred": "2026-12-28"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$575.40",
+      "pred": "$575.40"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "5",
+      "pred": "3"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Blue Harbor Foods",
+      "pred": "Blue Harbor Foods"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$818.58",
+      "pred": "$817.93"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Coffee beans 1kg",
+      "pred": "Coffee beans"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Blue Harbor Foods",
+      "pred": "Blue Harbor Foods"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "4",
+      "pred": "3"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "total",
+      "question": "What is the amount due / order total?",
+      "gold": "$2268.98",
+      "pred": "$2268.98"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "total",
+      "question": "What is the amount due / order total?",
+      "gold": "$8739.00",
+      "pred": "$8739.00"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "2",
+      "pred": "3"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$660.62",
+      "pred": "$92.81"
+    },
+    {
+      "group_id": "invoice-0087",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$969.63",
+      "pred": "$969.63"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Whiteboard",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Ergonomic chair",
+      "pred": "Monitor arm"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$1974.82",
+      "pred": "$1974.82"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Ergonomic chair",
+      "pred": "Ergonomic chair"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-11-17",
+      "pred": "2026-11-17"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Northwind Traders",
+      "pred": "Northwind Traders"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "4",
+      "pred": "3"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "2",
+      "pred": "3"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$2193.81",
+      "pred": "$2193.81"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "total",
+      "question": "What is the total amount?",
+      "gold": "$2412.96",
+      "pred": "$2412.96"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-08-03",
+      "pred": "2026-12-10"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-11-23",
+      "pred": "2026-11-11"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "5",
+      "pred": "3"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Meridian Analytics",
+      "pred": "Meridian Analytics"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$919.84",
+      "pred": "$919.84"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "5",
+      "pred": "5"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-09-02",
+      "pred": "2026-09-02"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-04-04",
+      "pred": "2026-04-04"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$975.58",
+      "pred": "$975.58"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Cedar & Vale LLP",
+      "pred": "Cedar & Vale LLP"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$678.13",
+      "pred": "$492.03"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-01-15",
+      "pred": "2026-04-10"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-06-04",
+      "pred": "2026-05-10"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Wireless mouse",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Wireless mouse",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Acme Logistics",
+      "pred": "Acme Logistics"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$4999.61",
+      "pred": "$4999.61"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-03-25",
+      "pred": "2026-03-25"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-12-06",
+      "pred": "2026-05-02"
+    },
+    {
+      "group_id": "invoice-0087",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-12-28",
+      "pred": "2026-12-28"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "4",
+      "pred": "3"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-07-27",
+      "pred": "2026-05-02"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-02-21",
+      "pred": "2026-05-02"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Sunfield Grocers",
+      "pred": "Sunfield Grocers"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$820.48",
+      "pred": "$820.48"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$945.20",
+      "pred": "$945.20"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Coffee beans 1kg",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-06-08",
+      "pred": "2026-06-08"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "4",
+      "pred": "5"
+    },
+    {
+      "group_id": "invoice-0087",
+      "qtype": "total",
+      "question": "What is the amount due / order total?",
+      "gold": "$5327.31",
+      "pred": "$5327.31"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Orbital Systems",
+      "pred": "Orbital Systems"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$857.92",
+      "pred": "$857.92"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$8170.06",
+      "pred": "$8170.06"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Cedar & Vale LLP",
+      "pred": "Cedar & Vale LLP"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-01-03",
+      "pred": "2026-01-03"
+    },
+    {
+      "group_id": "invoice-0087",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Sunfield Grocers",
+      "pred": "Sunfield Grocers"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Standing desk",
+      "pred": "Whiteboard"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Sunfield Grocers",
+      "pred": "Sunfield Grocers"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$7105.22",
+      "pred": "$7105.22"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "total",
+      "question": "What is the total amount?",
+      "gold": "$5117.50",
+      "pred": "$5117.58"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-12-16",
+      "pred": "2026-06-08"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Ergonomic chair",
+      "pred": "USB-C hub"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-10-21",
+      "pred": "2026-10-21"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$556.63",
+      "pred": "$556.63"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-02-15",
+      "pred": "2026-08-08"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Ironbridge Consulting",
+      "pred": "Ironbridge Consulting"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Sunfield Grocers",
+      "pred": "Sunfield Grocers"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "2",
+      "pred": "5"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Ironbridge Consulting",
+      "pred": "Ironbridge Consulting"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-07-03",
+      "pred": "2026-07-03"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Whiteboard",
+      "pred": "USB-C hub"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "4",
+      "pred": "3"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "3",
+      "pred": "3"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Notebook (pack of 5)",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "5",
+      "pred": "5"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "2",
+      "pred": "5"
+    },
+    {
+      "group_id": "quote-0041",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "4",
+      "pred": "5"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Orbital Systems",
+      "pred": "Orbital Systems"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$1508.14",
+      "pred": "$1508.14"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Coffee beans 1kg",
+      "pred": "USB-C hub"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "total",
+      "question": "What is the amount due / order total?",
+      "gold": "$8906.01",
+      "pred": "$8906.01"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$286.78",
+      "pred": "$44.26"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "sender",
+      "question": "Which company is the sender / vendor?",
+      "gold": "Meridian Analytics",
+      "pred": "Meridian Analytics"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "total",
+      "question": "What is the amount due / order total?",
+      "gold": "$1973.99",
+      "pred": "$1973.99"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "priciest_item",
+      "question": "What is the name of the highest-priced item?",
+      "gold": "Notebook (pack of 5)",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "invoice-0057",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-01-16",
+      "pred": "2026-10-14"
+    },
+    {
+      "group_id": "invoice-0027",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-01-18",
+      "pred": "2026-01-18"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "total",
+      "question": "What is the final total?",
+      "gold": "$9713.84",
+      "pred": "$9713.84"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$273.92",
+      "pred": "$272.48"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-11-02",
+      "pred": "2026-03-28"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "total",
+      "question": "What is the amount due / order total?",
+      "gold": "$3484.56",
+      "pred": "$3484.56"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-07-02",
+      "pred": "2026-07-02"
+    },
+    {
+      "group_id": "invoice-0087",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "4",
+      "pred": "3"
+    },
+    {
+      "group_id": "invoice-0000",
+      "qtype": "total",
+      "question": "What is the total amount?",
+      "gold": "$8329.77",
+      "pred": "$8329.77"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-10-18",
+      "pred": "2026-09-01"
+    },
+    {
+      "group_id": "quote-0002",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$700.77",
+      "pred": "$364.61"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-10-12",
+      "pred": "2026-08-26"
+    },
+    {
+      "group_id": "quote-0080",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-03-22",
+      "pred": "2026-09-01"
+    },
+    {
+      "group_id": "quote-0119",
+      "qtype": "num_items",
+      "question": "How many distinct items are on this document?",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "group_id": "purchase_order-0010",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Ergonomic chair",
+      "pred": "Monitor arm"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Meridian Analytics",
+      "pred": "Meridian Analytics"
+    },
+    {
+      "group_id": "quote-0068",
+      "qtype": "max_lineitem",
+      "question": "What is the price of the most expensive line item (not the total)?",
+      "gold": "$802.71",
+      "pred": "$802.71"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Coffee beans 1kg",
+      "pred": "Monitor arm"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-05-02",
+      "pred": "2026-05-02"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "earliest_date",
+      "question": "Of all dates shown, which is the earliest calendar date?",
+      "gold": "2026-03-28",
+      "pred": "2026-03-28"
+    },
+    {
+      "group_id": "purchase_order-0076",
+      "qtype": "num_items",
+      "question": "How many line items are listed?",
+      "gold": "5",
+      "pred": "3"
+    },
+    {
+      "group_id": "purchase_order-0004",
+      "qtype": "sender",
+      "question": "Who issued this document?",
+      "gold": "Orbital Systems",
+      "pred": "Orbital Systems"
+    },
+    {
+      "group_id": "purchase_order-0055",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-08-26",
+      "pred": "2026-08-26"
+    },
+    {
+      "group_id": "purchase_order-0070",
+      "qtype": "max_lineitem",
+      "question": "Among the individual line items, what is the highest item price?",
+      "gold": "$857.82",
+      "pred": "$857.82"
+    },
+    {
+      "group_id": "quote-0086",
+      "qtype": "latest_date",
+      "question": "Which of the dates on this document is the latest (most recent)?",
+      "gold": "2026-05-12",
+      "pred": "2026-05-12"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-12-28",
+      "pred": "2026-12-28"
+    },
+    {
+      "group_id": "invoice-0054",
+      "qtype": "earliest_date",
+      "question": "Which of the dates on this document is the earliest?",
+      "gold": "2026-02-15",
+      "pred": "2026-03-28"
+    },
+    {
+      "group_id": "invoice-0024",
+      "qtype": "priciest_item",
+      "question": "Which line item is the most expensive?",
+      "gold": "Whiteboard",
+      "pred": "Wireless mouse"
+    },
+    {
+      "group_id": "purchase_order-0007",
+      "qtype": "latest_date",
+      "question": "Of all dates shown, which is the latest calendar date?",
+      "gold": "2026-09-04",
+      "pred": "2026-08-08"
+    }
+  ]
+}

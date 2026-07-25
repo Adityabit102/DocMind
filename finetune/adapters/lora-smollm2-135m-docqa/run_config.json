@@ -1,0 +1,39 @@
+{
+  "run_name": "lora-smollm2-135m-docqa",
+  "base_model": "HuggingFaceTB/SmolLM2-135M",
+  "lora": {
+    "r": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "trainable_params": 2442240,
+    "total_params": 136957248,
+    "trainable_pct": 1.7832
+  },
+  "training": {
+    "epochs": 3.0,
+    "max_steps": -1,
+    "batch_size": 8,
+    "grad_accum": 1,
+    "lr": 0.0002,
+    "max_len": 512,
+    "seed": 42,
+    "device": "cpu",
+    "train_seconds": 569.6
+  },
+  "final_train_loss": 0.07073413133621216,
+  "final_eval_loss": 0.12485763430595398,
+  "task": "document extractive QA",
+  "val_task_metrics": {
+    "exact_match": 0.6111,
+    "token_f1": 0.6175
+  }
+}

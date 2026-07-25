@@ -22,3 +22,11 @@ frontend/out
 .DS_Store
 .idea
 .vscode
+
+# Model-building extension (finetune/ vlm_module/ eval_harness/) is a
+# parallel, non-deployed layer — keep it out of the production image entirely.
+finetune
+vlm_module
+eval_harness
+models
+requirements-modelbuild.txt

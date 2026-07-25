@@ -42,3 +42,16 @@ frontend/.turbo/
 
 # AI assistant config
 .claude/
+
+# ── Model-building extension (finetune/ vlm_module/ eval_harness/) ──
+# Keep the saved LoRA adapter + reports as demonstrable artifacts, but skip
+# transient training checkpoints and degradation-preview scratch.
+finetune/adapters/*/checkpoints/
+eval_harness/_degrade_preview/
+# LoRA weight binaries: HF Spaces' git remote rejects plain-git binary files
+# (requires LFS/Xet). Config, tokenizer, loss curves, and metrics ARE kept as
+# evidence the run happened; only the weight tensors themselves are excluded.
+# Reproduce with: python -m finetune.train_lora --run-name <name> (see
+# MODEL_BUILDING.md quickstart) — config/seed are recorded in run_config.json.
+finetune/adapters/**/adapter_model.safetensors
+models/

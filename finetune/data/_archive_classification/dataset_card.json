@@ -1,0 +1,55 @@
+{
+  "task": "document-type classification (6 classes)",
+  "labels": [
+    "invoice",
+    "receipt",
+    "resume",
+    "email",
+    "letter",
+    "contract"
+  ],
+  "generation": {
+    "per_class": 60,
+    "seed": 42,
+    "synthetic_templated": true
+  },
+  "split_methodology": "grouped-by-instance + stratified-by-label, 70/15/15",
+  "leakage_check": {
+    "exact_cross_split_overlaps": 0,
+    "near_duplicate_pairs_ge_0.9_jaccard": 0,
+    "passed": true
+  },
+  "counts": {
+    "per_split": {
+      "test": 54,
+      "train": 252,
+      "val": 54
+    },
+    "per_label": {
+      "test": {
+        "email": 9,
+        "letter": 9,
+        "resume": 9,
+        "invoice": 9,
+        "receipt": 9,
+        "contract": 9
+      },
+      "train": {
+        "email": 42,
+        "contract": 42,
+        "resume": 42,
+        "receipt": 42,
+        "invoice": 42,
+        "letter": 42
+      },
+      "val": {
+        "email": 9,
+        "contract": 9,
+        "receipt": 9,
+        "letter": 9,
+        "resume": 9,
+        "invoice": 9
+      }
+    }
+  }
+}
