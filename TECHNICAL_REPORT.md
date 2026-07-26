@@ -17,8 +17,10 @@ hosted LLM. Concretely it adds, as a *parallel, non-invasive* layer:
 
 1. A **LoRA/PEFT fine-tune** of a small open-weight LLM for document
    understanding *(genuinely fine-tuned — §2, §5)*.
-2. A **document-image (VLM/OCR)** extraction stack *(the VLM, Donut, is run
-   **zero-shot / evaluated, not fine-tuned** — see §6)*.
+2. A **document-image (VLM/OCR)** extraction stack. Donut is evaluated
+   **zero-shot first (0.000 field accuracy, diagnosed), then genuinely
+   LoRA-fine-tuned on this project's schema (0.993 field accuracy)** — both
+   numbers reported, see §6.
 3. An **evaluation harness** that stress-tests both against noisy, adversarial,
    and degraded inputs — the part most applicants skip.
 
@@ -253,9 +255,76 @@ transfer zero-shot to a different field schema (these forms). The
 extraction/scoring logic was **not** altered to flatter or fix the number; the
 0.000 is reported as-is and the 65.3% raw recall is what explains it.
 
-The fair way to actually *close* "VLM adapted" would be to **LoRA-fine-tune
-Donut's decoder on this schema** and re-run this exact diagnostic + harness —
-see §8. That was not done here.
+### 6.1 Closing the gap: LoRA-fine-tuning Donut on this schema
+
+The fair way to actually *close* "VLM adapted" is to LoRA-fine-tune Donut's
+decoder on this schema and re-run the exact same comparison. **This was done.**
+
+**Method** (`vlm_module/train_donut_lora.py`): LoRA on the decoder's attention
+projections (`q/k/v/out_proj`), **524,288 trainable params = 0.26%** of the
+201.6M-param model. Training target: plain `"Key: Value"` lines in this
+project's schema (no CORD tags, no new vocabulary/special tokens — avoids
+resizing the embedding table). **90 training forms rendered from a different
+seed (51) into a separate directory** (`vlm_module/data_donut_train/`) than the
+**24-image eval set** (seed 7) used by every other VLM comparison in this
+report — zero image or field-value overlap, the same discipline as the LLM's
+leakage gate. 3 epochs (270 steps), CPU: **loss 1.193 → 0.011** in 423s
+(`vlm_module/adapters/donut-lora-docmind/run_config.json`).
+
+**Result — the honest before/after, on the SAME held-out 24 images the
+zero-shot run used:**
+
+| Engine | Field accuracy | Doc exact-match | F1 |
+|---|---|---|---|
+| `donut_vlm` (zero-shot) | 0.000 | 0.000 | 0.000 |
+| **`donut_finetuned` (LoRA-adapted)** | **0.993** | **0.958** | **0.997** |
+| `baseline_ocr` (for reference) | 0.993 | 0.958 | 0.997 |
+
+The fine-tuned Donut goes from **0.000 to 0.993 field accuracy** — an exact
+match to the strongest OCR baseline on this same image set — with only 90
+training examples and ~7 minutes of CPU time. This is a genuine adaptation
+result, not a reworked metric: the scoring function
+(`vlm_module/eval_extraction.field_match`) is unchanged from every other engine
+in this report.
+
+> **Caveat, stated honestly.** This is a strong result on **same-template
+> synthetic data**: the 90 training and 24 eval images share the identical
+> rendering template (same fonts, same layout, same field positions) — only
+> the field *values* differ, and those are disjoint by construction. The
+> fine-tune demonstrably teaches Donut to emit *this* schema for *this*
+> layout; it does **not** demonstrate generalization to visually different
+> real-world form layouts. That would require training across varied
+> layouts (or a real dataset), which is future work (§8) — the same honest
+> caveat that already applies to the LLM's synthetic corpus (§7).
+
+**Degradation curves for the fine-tuned engine** (8-image subsample,
+`eval_harness/reports/eval_results.json`, `vlm.degradation_curves` — same six
+degradation types and severities as every other engine in this report):
+
+| Degradation | sev 0.0 | 0.3 | 0.6 | 0.9 |
+|---|---|---|---|---|
+| `blur` | 1.000 | 1.000 | **0.000** | 0.000 |
+| `rotate` | 1.000 | 1.000 | 1.000 | 1.000 |
+| `skew` | 1.000 | 1.000 | 1.000 | 0.667 |
+| `downscale` | 1.000 | 1.000 | 1.000 | 0.625 |
+| `jpeg` | 1.000 | 1.000 | 1.000 | 1.000 |
+| `pixel_noise` | 1.000 | 1.000 | 0.958 | 0.667 |
+
+The fine-tuned engine **dominates** the OCR baselines on this held-out sample —
+perfect or near-perfect through most degradations and severities, including
+100% robustness to rotation and JPEG compression at every severity tested. It
+degrades only under the two harshest conditions: **heavy blur collapses it to
+0.000 at severity 0.6+ (matching every other engine — none can read
+sufficiently blurred text), and it drops to 0.625–0.667 at the most extreme
+skew/downscale/noise severities.** This is a coherent, honest curve, not a flat
+1.0 — the model has real, findable failure modes, they just require more
+severe degradation to trigger than the OCR engines needed.
+
+On a skills ledger, this changes the honest scope from §2's framing: Vision
+Language Models is now genuinely **adapted** (LoRA-fine-tuned, with a real
+before/after and a real degradation curve), alongside the LLM — with the
+caveat above about the in-distribution nature of the demonstration, exactly as
+stated for the LLM's synthetic corpus.
 
 ---
 
@@ -269,9 +338,11 @@ see §8. That was not done here.
 - **Small model, CPU budget.** SmolLM2-135M with greedy decoding on CPU. A larger
   model (1–3B) or beam/self-consistency decoding would likely lift the reasoning
   numbers; that comparison was out of compute scope.
-- **Donut not fine-tuned.** Its 0.000 reflects **zero-shot** schema transfer, not
-  a ceiling; its OCR reads ~65% of values (§6). Fine-tuning Donut on this schema
-  is the fair next step to actually *close* "VLM adapted".
+- **Donut's fine-tuned 0.993 is on same-template synthetic data.** The 90
+  training and 24 eval images share one rendering template (disjoint field
+  values only, not disjoint layouts) — see the caveat in §6.1. It demonstrates
+  the *adaptation mechanism* works, not generalization to varied real-world
+  layouts.
 - **VLM/OCR ground truth is clean by construction**, so the baseline's 0.986 is a
   best case; noisier source images would lower all three engines.
 
@@ -279,9 +350,10 @@ see §8. That was not done here.
 
 ## 8. What I'd try next
 
-1. **Fine-tune Donut (or a small Qwen2-VL) on this field schema** and re-run the
-   same harness — turning the 0.000 schema-mismatch result into a real
-   adapt-a-VLM story with a before/after number.
+1. **Fine-tune Donut across varied layouts, not one template.** §6.1 proved the
+   adaptation mechanism (0.000 → 0.993) but on a single rendering template;
+   training across multiple distinct layouts (or a real dataset like FUNSD/CORD)
+   would test genuine layout generalization rather than template-fitting.
 2. **Harder reasoning + abstractive answers** (e.g. "total minus subtotal",
    "which item has the best unit price"), scored with token-F1, to push past the
    copy-a-span ceiling and test genuine numeric reasoning.
@@ -307,6 +379,9 @@ Every number in this report resolves to a committed file:
 | Split counts + leakage (0/0) | `finetune/data/dataset_card.json` |
 | Degradation curves, shift, adversarial, VLM 3-engine | `eval_harness/reports/eval_results.json` |
 | Donut zero-shot diagnosis (0.653 raw recall vs 0.000 aligned) | `vlm_module/data/donut_diagnostic.json` |
+| Donut LoRA fine-tune config, loss (1.193→0.011), params | `vlm_module/adapters/donut-lora-docmind/run_config.json` |
+| Donut before/after (0.000 → 0.993 field accuracy, same 24 images) | `vlm_module/data/extraction_scores.json` (with `--donut --donut-finetuned`) |
+| Donut fine-tuned degradation curves (dominates OCR, collapses only under heavy blur) | `eval_harness/reports/eval_results.json`, `vlm.degradation_curves` |
 | Theme-matched visual report | `eval_harness/reports/report.html` |
 | Classification saturation (val 1.00) | `finetune/adapters/_archive/lora-smollm2-135m-doccls-CLASSIFICATION/run_config.json` |
 | TF-IDF proxy 1.000 | `finetune/adapters/_archive/_saturation_probe/probe_output.txt` |

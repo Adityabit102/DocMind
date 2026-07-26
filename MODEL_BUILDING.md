@@ -33,8 +33,9 @@ here is exactly what has been executed on this machine (CPU-only):
 | LoRA fine-tune (SmolLM2-135M, extractive QA) | **Run** | `finetune/adapters/lora-smollm2-135m-docqa/` — saved adapter, `loss_curve.png`, `run_config.json` |
 | Data prep + leakage check | **Run** | `finetune/data/dataset_card.json` (0 cross-split context duplicates) |
 | OCR baseline vs. layout-aware extraction | **Run** | `vlm_module/data/extraction_scores.json` |
-| Donut VLM engine | **Run for real** | `eval_harness/reports/eval_results.json` (`vlm.engines` includes `donut_vlm`); scored **0.00** field accuracy — see honesty note below |
-| Degradation harness (LLM + OCR/VLM, 3 engines) | **Run** | `eval_harness/reports/eval_results.json` + `report.html` |
+| Donut VLM — zero-shot | **Run for real** | scored **0.00** field accuracy — see honesty note below |
+| Donut VLM — LoRA fine-tuned on this schema | **Run for real** | `vlm_module/adapters/donut-lora-docmind/run_config.json`; **0.00 → 0.993** field accuracy on the same 24 held-out images |
+| Degradation harness (LLM + OCR/VLM, 4 engines) | **Run** | `eval_harness/reports/eval_results.json` + `report.html` |
 
 **Why the task changed (classification → extractive QA).** The first version of
 this module fine-tuned a **6-class document-type classifier**. It reached
@@ -105,7 +106,10 @@ python -m vlm_module.synth_forms -n 24
 python -m vlm_module.eval_extraction            # baseline vs. layout-aware
 #    To include the real Donut VLM: fetch weights once (streams ~806 MB), then:
 python -m vlm_module.fetch_donut
-python -m vlm_module.eval_extraction --donut
+python -m vlm_module.eval_extraction --donut               # zero-shot: ~0.00
+#    To reproduce the LoRA fine-tune (0.00 -> 0.99 on held-out images):
+python -m vlm_module.train_donut_lora --epochs 3
+python -m vlm_module.eval_extraction --donut --donut-finetuned
 
 # 6) Run the degradation harness and render the theme-matched report
 python -m eval_harness.run_evaluation \
@@ -143,25 +147,35 @@ python -m eval_harness.report          # -> eval_harness/reports/report.html
   parser, opt-in because of its size.
 - **`eval_extraction.py`** — field-level P/R/F1, engine-vs-engine.
 
-> **Honesty note (design doc §5.2) — Donut was run ZERO-SHOT (evaluated, not
-> fine-tuned).** The Donut VLM (`donut-base-finetuned-cord-v2`) was loaded
-> pretrained and executed end-to-end over the same image test set and full
-> degradation sweep. **It was not fine-tuned in this project** — so this is
-> "VLM evaluated," not "VLM adapted." It scored **0.00 field accuracy**, and the
-> cause is diagnosed (`vlm_module/donut_diagnostic.py` →
-> `vlm_module/data/donut_diagnostic.json`):
+> **Honesty note (design doc §5.2) — Donut: zero-shot FIRST, then genuinely
+> fine-tuned.** The Donut VLM (`donut-base-finetuned-cord-v2`) was first loaded
+> pretrained and evaluated **zero-shot** — this scored **0.00 field accuracy**,
+> diagnosed (`vlm_module/donut_diagnostic.py` → `vlm_module/data/donut_diagnostic.json`)
+> as an output-format mismatch: **raw value recall 0.653** (Donut's OCR reads
+> ~65% of the gold values) vs. **schema-aligned accuracy 0.000** (none land under
+> the right field name, because it emits the CORD receipt schema
+> `<s_menu>`, `<s_total_price>`, … it was pretrained on, not this form's keys).
+> Not an OCR failure or a broken eval — the same harness scores the OCR engines
+> 0.986 / 0.889.
 >
-> - **Raw value recall 0.653** — Donut's OCR emits ~65% of the gold values
->   *somewhere* in its output. **Schema-aligned field accuracy 0.000** — none map
->   to the correct field name, because it emits the **CORD receipt schema**
->   (`<s_menu>`, `<s_total_price>`, …) it was trained on, not this form's keys.
-> - So this is an **output-format / schema mismatch, not an OCR failure and not a
->   broken eval** (the same harness scores the OCR engines 0.986 / 0.889). An
->   off-the-shelf VLM fine-tuned for receipts does not transfer zero-shot to a
->   new field schema.
-> - Genuinely *closing* "VLM adapted" would require **LoRA-fine-tuning Donut's
->   decoder** on this schema and re-running this diagnostic + harness — not done
->   here. The layout-aware OCR engine remains the strongest *runnable* extractor.
+> **Then it was actually LoRA-fine-tuned** on this schema
+> (`vlm_module/train_donut_lora.py`: LoRA on the decoder's attention
+> projections, 524,288 trainable params = 0.26%, 90 training forms rendered
+> from a *different seed* than the eval images — zero overlap — 3 epochs,
+> loss 1.193→0.011 in 423s CPU). Re-evaluated on the **same 24 held-out images**
+> the zero-shot run used:
+>
+> | | zero-shot | LoRA fine-tuned |
+> |---|---|---|
+> | Field accuracy | 0.000 | **0.993** |
+>
+> This is a real, reproducible before/after (`vlm_module/adapters/donut-lora-docmind/run_config.json`,
+> `vlm_module/data/extraction_scores.json`) — "Vision Language Models" is now
+> genuinely **adapted**, not just evaluated. The one honest caveat: the 90
+> training and 24 eval images share one rendering template (only field
+> *values* differ, disjoint by construction) — this proves the adaptation
+> mechanism, not generalization to visually different real-world layouts
+> (see `TECHNICAL_REPORT.md` §6.1 for the full caveat).
 >
 > The weights were fetched manually (`models/donut-cord/`, git-ignored) because
 > the HF hub downloader stalls on the 806 MB blob over anonymous connections;

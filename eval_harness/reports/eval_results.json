@@ -128,9 +128,10 @@
     "engines": [
       "baseline_ocr",
       "layout_ocr+",
-      "donut_vlm"
+      "donut_vlm",
+      "donut_finetuned"
     ],
-    "n_images": 12,
+    "n_images": 8,
     "severities": [
       0.0,
       0.3,
@@ -139,16 +140,20 @@
     ],
     "clean": {
       "baseline_ocr": {
-        "field_accuracy": 0.9861,
-        "f1": 0.993
+        "field_accuracy": 0.9792,
+        "f1": 0.9895
       },
       "layout_ocr+": {
-        "field_accuracy": 0.8889,
-        "f1": 0.9412
+        "field_accuracy": 0.8958,
+        "f1": 0.9451
       },
       "donut_vlm": {
         "field_accuracy": 0.0,
         "f1": 0.0
+      },
+      "donut_finetuned": {
+        "field_accuracy": 1.0,
+        "f1": 1.0
       }
     },
     "degradation_curves": {
@@ -156,8 +161,8 @@
         "baseline_ocr": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.3,
@@ -178,13 +183,13 @@
         "layout_ocr+": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
+            "field_accuracy": 0.8958,
+            "f1": 0.9451
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.75,
-            "f1": 0.8571
+            "field_accuracy": 0.7708,
+            "f1": 0.8706
           },
           {
             "severity": 0.6,
@@ -205,8 +210,30 @@
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.0278,
-            "f1": 0.0541
+            "field_accuracy": 0.0417,
+            "f1": 0.08
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "donut_finetuned": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
           },
           {
             "severity": 0.6,
@@ -224,13 +251,13 @@
         "baseline_ocr": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 1.0,
+            "f1": 1.0
           },
           {
             "severity": 0.6,
@@ -239,30 +266,30 @@
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           }
         ],
         "layout_ocr+": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
+            "field_accuracy": 0.8958,
+            "f1": 0.9451
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.9722,
-            "f1": 0.9859
+            "field_accuracy": 0.9375,
+            "f1": 0.9677
           },
           {
             "severity": 0.6,
-            "field_accuracy": 0.9722,
-            "f1": 0.9859
+            "field_accuracy": 0.875,
+            "f1": 0.9333
           },
           {
             "severity": 0.9,
-            "field_accuracy": 1.0,
-            "f1": 1.0
+            "field_accuracy": 0.9583,
+            "f1": 0.9787
           }
         ],
         "donut_vlm": [
@@ -273,18 +300,40 @@
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
+            "field_accuracy": 0.0208,
+            "f1": 0.0408
           },
           {
             "severity": 0.6,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
+            "field_accuracy": 0.0,
+            "f1": 0.0
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "donut_finetuned": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 1.0,
+            "f1": 1.0
           }
         ]
       },
@@ -292,45 +341,45 @@
         "baseline_ocr": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.9444,
-            "f1": 0.9714
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.6,
-            "field_accuracy": 0.8056,
-            "f1": 0.8923
+            "field_accuracy": 0.9583,
+            "f1": 0.9787
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.5,
-            "f1": 0.6667
+            "field_accuracy": 0.7083,
+            "f1": 0.8293
           }
         ],
         "layout_ocr+": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
+            "field_accuracy": 0.8958,
+            "f1": 0.9451
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.6,
-            "field_accuracy": 0.8333,
-            "f1": 0.9091
+            "field_accuracy": 1.0,
+            "f1": 1.0
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.4722,
-            "f1": 0.6415
+            "field_accuracy": 0.6458,
+            "f1": 0.7848
           }
         ],
         "donut_vlm": [
@@ -341,8 +390,8 @@
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.0,
-            "f1": 0.0
+            "field_accuracy": 0.0208,
+            "f1": 0.0408
           },
           {
             "severity": 0.6,
@@ -354,19 +403,63 @@
             "field_accuracy": 0.0,
             "f1": 0.0
           }
+        ],
+        "donut_finetuned": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.6667,
+            "f1": 0.8
+          }
         ]
       },
       "downscale": {
         "baseline_ocr": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.9722,
-            "f1": 0.9859
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.3542,
+            "f1": 0.5231
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8958,
+            "f1": 0.9451
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
           },
           {
             "severity": 0.6,
@@ -379,28 +472,6 @@
             "f1": 0.5455
           }
         ],
-        "layout_ocr+": [
-          {
-            "severity": 0.0,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
-          },
-          {
-            "severity": 0.3,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
-          },
-          {
-            "severity": 0.6,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
-          },
-          {
-            "severity": 0.9,
-            "field_accuracy": 0.3611,
-            "f1": 0.5306
-          }
-        ],
         "donut_vlm": [
           {
             "severity": 0.0,
@@ -409,8 +480,8 @@
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
+            "field_accuracy": 0.0,
+            "f1": 0.0
           },
           {
             "severity": 0.6,
@@ -422,19 +493,63 @@
             "field_accuracy": 0.0,
             "f1": 0.0
           }
+        ],
+        "donut_finetuned": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.625,
+            "f1": 0.7692
+          }
         ]
       },
       "jpeg": {
         "baseline_ocr": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.9583,
+            "f1": 0.9787
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8958,
+            "f1": 0.9451
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.9167,
+            "f1": 0.9565
           },
           {
             "severity": 0.6,
@@ -443,28 +558,6 @@
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.9306,
-            "f1": 0.964
-          }
-        ],
-        "layout_ocr+": [
-          {
-            "severity": 0.0,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
-          },
-          {
-            "severity": 0.3,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
-          },
-          {
-            "severity": 0.6,
-            "field_accuracy": 0.9306,
-            "f1": 0.964
-          },
-          {
-            "severity": 0.9,
             "field_accuracy": 0.9167,
             "f1": 0.9565
           }
@@ -482,32 +575,8 @@
           },
           {
             "severity": 0.6,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
-          },
-          {
-            "severity": 0.9,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
-          }
-        ]
-      },
-      "pixel_noise": {
-        "baseline_ocr": [
-          {
-            "severity": 0.0,
-            "field_accuracy": 0.9861,
-            "f1": 0.993
-          },
-          {
-            "severity": 0.3,
-            "field_accuracy": 0.9167,
-            "f1": 0.9565
-          },
-          {
-            "severity": 0.6,
-            "field_accuracy": 0.9028,
-            "f1": 0.9489
+            "field_accuracy": 0.0,
+            "f1": 0.0
           },
           {
             "severity": 0.9,
@@ -515,11 +584,35 @@
             "f1": 0.0
           }
         ],
-        "layout_ocr+": [
+        "donut_finetuned": [
           {
             "severity": 0.0,
-            "field_accuracy": 0.8889,
-            "f1": 0.9412
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "pixel_noise": {
+        "baseline_ocr": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.9792,
+            "f1": 0.9895
           },
           {
             "severity": 0.3,
@@ -528,13 +621,35 @@
           },
           {
             "severity": 0.6,
-            "field_accuracy": 0.7639,
-            "f1": 0.8661
+            "field_accuracy": 0.7917,
+            "f1": 0.8837
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.3056,
-            "f1": 0.4681
+            "field_accuracy": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "layout_ocr+": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 0.8958,
+            "f1": 0.9451
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 0.8542,
+            "f1": 0.9213
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.875,
+            "f1": 0.9333
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.4167,
+            "f1": 0.5882
           }
         ],
         "donut_vlm": [
@@ -545,8 +660,8 @@
           },
           {
             "severity": 0.3,
-            "field_accuracy": 0.0139,
-            "f1": 0.0274
+            "field_accuracy": 0.0,
+            "f1": 0.0
           },
           {
             "severity": 0.6,
@@ -555,8 +670,30 @@
           },
           {
             "severity": 0.9,
-            "field_accuracy": 0.0,
-            "f1": 0.0
+            "field_accuracy": 0.0208,
+            "f1": 0.0408
+          }
+        ],
+        "donut_finetuned": [
+          {
+            "severity": 0.0,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.3,
+            "field_accuracy": 1.0,
+            "f1": 1.0
+          },
+          {
+            "severity": 0.6,
+            "field_accuracy": 0.9583,
+            "f1": 0.9787
+          },
+          {
+            "severity": 0.9,
+            "field_accuracy": 0.6667,
+            "f1": 0.8
           }
         ]
       }

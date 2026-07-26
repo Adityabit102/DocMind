@@ -54,4 +54,6 @@ eval_harness/_degrade_preview/
 # Reproduce with: python -m finetune.train_lora --run-name <name> (see
 # MODEL_BUILDING.md quickstart) — config/seed are recorded in run_config.json.
 finetune/adapters/**/adapter_model.safetensors
+vlm_module/adapters/**/adapter_model.safetensors
+vlm_module/data_donut_train/
 models/

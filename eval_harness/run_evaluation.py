@@ -91,7 +91,8 @@ def evaluate_llm(base_model: str, adapter_dir: str,
 
 
 # ── VLM / OCR evaluation ─────────────────────────────────────────────────
-def evaluate_vlm(severities: list[float], limit: int | None, include_donut: bool) -> dict:
+def evaluate_vlm(severities: list[float], limit: int | None, include_donut: bool,
+                 include_donut_finetuned: bool = False) -> dict:
     from PIL import Image
 
     from eval_harness.degrade_inputs import IMAGE_DEGRADATIONS, apply_image
@@ -114,6 +115,8 @@ def evaluate_vlm(severities: list[float], limit: int | None, include_donut: bool
     }
     if include_donut:
         engines["donut_vlm"] = lambda img: _extract_from_pil(document_extraction, img, "donut")
+    if include_donut_finetuned:
+        engines["donut_finetuned"] = lambda img: _extract_from_pil(document_extraction, img, "donut_finetuned")
 
     def field_f1_over(images_and_gold, engine_fn) -> dict:
         tp = fp = fn = correct = total = 0
@@ -195,7 +198,9 @@ def main() -> None:
     ap.add_argument("--vlm-limit", type=int, default=12, help="cap images for speed")
     ap.add_argument("--skip-llm", action="store_true")
     ap.add_argument("--skip-vlm", action="store_true")
-    ap.add_argument("--donut", action="store_true", help="also evaluate the Donut VLM engine")
+    ap.add_argument("--donut", action="store_true", help="also evaluate the zero-shot Donut VLM engine")
+    ap.add_argument("--donut-finetuned", action="store_true",
+                    help="also evaluate our LoRA-fine-tuned Donut engine")
     ap.add_argument("--out", default=str(REPORTS_DIR / "eval_results.json"))
     args = ap.parse_args()
 
@@ -211,7 +216,7 @@ def main() -> None:
             results["llm"] = evaluate_llm(args.base_model, adapter, args.severities, args.llm_limit)
 
     if not args.skip_vlm:
-        results["vlm"] = evaluate_vlm(args.severities, args.vlm_limit, args.donut)
+        results["vlm"] = evaluate_vlm(args.severities, args.vlm_limit, args.donut, args.donut_finetuned)
 
     Path(args.out).write_text(json.dumps(results, indent=2))
     print("\nWrote results ->", args.out)

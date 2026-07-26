@@ -97,8 +97,9 @@ def evaluate_engine(extract_fn, engine_name: str,
     )
 
 
-def compare_engines(limit: int | None = None, include_donut: bool = False) -> dict:
-    """Baseline OCR vs. layout-aware (vs. Donut if requested). Returns a dict."""
+def compare_engines(limit: int | None = None, include_donut: bool = False,
+                    include_donut_finetuned: bool = False) -> dict:
+    """Baseline OCR vs. layout-aware vs. Donut (zero-shot / fine-tuned). Returns a dict."""
     from vlm_module import baseline_ocr, document_extraction
 
     results: dict[str, dict] = {}
@@ -120,6 +121,14 @@ def compare_engines(limit: int | None = None, include_donut: bool = False) -> di
             results["donut_vlm"] = s3.__dict__
         except Exception as exc:  # noqa: BLE001
             results["donut_vlm_error"] = str(exc)
+
+    if include_donut_finetuned:
+        try:
+            s4 = evaluate_engine(lambda p: document_extraction.extract_fields(p, "donut_finetuned"),
+                                 "donut_finetuned", manifest=manifest, limit=limit)
+            results["donut_finetuned"] = s4.__dict__
+        except Exception as exc:  # noqa: BLE001
+            results["donut_finetuned_error"] = str(exc)
     return results
 
 
@@ -128,11 +137,14 @@ if __name__ == "__main__":  # pragma: no cover
 
     ap = argparse.ArgumentParser(description="Compare document-extraction engines on the clean image set")
     ap.add_argument("--limit", type=int, default=None)
-    ap.add_argument("--donut", action="store_true", help="also run the Donut VLM (heavy download)")
+    ap.add_argument("--donut", action="store_true", help="also run the zero-shot Donut VLM")
+    ap.add_argument("--donut-finetuned", action="store_true",
+                    help="also run our LoRA-fine-tuned Donut (vlm_module/adapters/donut-lora-docmind)")
     ap.add_argument("--out", default=str(DATA_DIR / "extraction_scores.json"))
     args = ap.parse_args()
 
-    res = compare_engines(limit=args.limit, include_donut=args.donut)
+    res = compare_engines(limit=args.limit, include_donut=args.donut,
+                          include_donut_finetuned=args.donut_finetuned)
     Path(args.out).write_text(json.dumps(res, indent=2))
     for name, s in res.items():
         if isinstance(s, dict) and "exact_field_accuracy" in s:

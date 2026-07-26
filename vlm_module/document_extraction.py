@@ -187,6 +187,67 @@ def extract_fields_donut(image_path: str | Path,
     return _fuzzy_map_to_fields(seq)
 
 
+_FINETUNED_DONUT_CACHE: dict = {}
+_FINETUNED_DONUT_DIR = Path(__file__).resolve().parent / "adapters" / "donut-lora-docmind"
+
+
+def _load_donut_finetuned(adapter_dir: str | Path = _FINETUNED_DONUT_DIR):
+    """Load the zero-shot Donut base + our LoRA adapter (merged), for inference."""
+    key = str(adapter_dir)
+    if key in _FINETUNED_DONUT_CACHE:
+        return _FINETUNED_DONUT_CACHE[key]
+    from peft import PeftModel
+
+    processor, base_model, torch = _load_donut(_HUB_DONUT)
+    model = PeftModel.from_pretrained(base_model, str(adapter_dir))
+    model = model.merge_and_unload().eval()
+    tok = processor.tokenizer
+    model.config.pad_token_id = tok.pad_token_id
+    model.config.decoder_start_token_id = tok.convert_tokens_to_ids("<s>")
+    _FINETUNED_DONUT_CACHE[key] = (processor, model, torch)
+    return _FINETUNED_DONUT_CACHE[key]
+
+
+def _parse_finetuned_donut_output(text: str) -> dict[str, str]:
+    """Segment "<Key>: <value> <Key>: <value> ..." into a field dict.
+
+    The fine-tuned model was trained to emit exactly this shape, but decoding
+    can collapse the training-time newlines to spaces, so we can't split on
+    "\\n" — instead we find every occurrence of a known FIELD_KEYS label
+    followed by ":" and take the text up to the NEXT such label as that
+    field's value (longest-key-first so no label is a prefix-match of another).
+    """
+    keys_sorted = sorted(FIELD_KEYS, key=len, reverse=True)
+    pattern = re.compile(r"(" + "|".join(re.escape(k) for k in keys_sorted) + r")\s*:\s*")
+    matches = list(pattern.finditer(text))
+    fields = {k: "" for k in FIELD_KEYS}
+    for i, m in enumerate(matches):
+        key = m.group(1)
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        fields[key] = text[start:end].strip()
+    return fields
+
+
+def extract_fields_donut_finetuned(image_path: str | Path,
+                                   adapter_dir: str | Path = _FINETUNED_DONUT_DIR) -> dict[str, str]:
+    """Run OUR LoRA-fine-tuned Donut (schema-adapted, not zero-shot)."""
+    from PIL import Image
+
+    processor, model, torch = _load_donut_finetuned(adapter_dir)
+    image = Image.open(image_path).convert("RGB")
+    pixel_values = processor(image, return_tensors="pt").pixel_values
+    with torch.no_grad():
+        out = model.generate(
+            pixel_values, max_length=160,
+            pad_token_id=processor.tokenizer.pad_token_id,
+            eos_token_id=processor.tokenizer.eos_token_id,
+            use_cache=True, num_beams=1,
+        )
+    seq = processor.tokenizer.decode(out[0], skip_special_tokens=True)
+    return _parse_finetuned_donut_output(seq)
+
+
 def _fuzzy_map_to_fields(text: str) -> dict[str, str]:
     fields = {k: "" for k in FIELD_KEYS}
     for key in FIELD_KEYS:
@@ -202,7 +263,9 @@ def extract_fields(image_path: str | Path, engine: str = "layout") -> dict[str, 
         return extract_fields_layout(image_path)
     if engine == "donut":
         return extract_fields_donut(image_path)
-    raise ValueError(f"unknown engine {engine!r} (use 'layout' or 'donut')")
+    if engine == "donut_finetuned":
+        return extract_fields_donut_finetuned(image_path)
+    raise ValueError(f"unknown engine {engine!r} (use 'layout', 'donut', or 'donut_finetuned')")
 
 
 if __name__ == "__main__":  # pragma: no cover
