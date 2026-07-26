@@ -211,18 +211,21 @@ def _load_donut_finetuned(adapter_dir: str | Path = _FINETUNED_DONUT_DIR):
 def _parse_finetuned_donut_output(text: str) -> dict[str, str]:
     """Segment "<Key>: <value> <Key>: <value> ..." into a field dict.
 
-    The fine-tuned model was trained to emit exactly this shape, but decoding
-    can collapse the training-time newlines to spaces, so we can't split on
-    "\\n" — instead we find every occurrence of a known FIELD_KEYS label
-    followed by ":" and take the text up to the NEXT such label as that
-    field's value (longest-key-first so no label is a prefix-match of another).
+    The fine-tuned model was trained to emit exactly this shape on the
+    templates it saw. On an unseen layout it can drift toward THAT layout's
+    own on-image key casing (e.g. "VENDOR:" — the "stacked" template renders
+    keys upper-cased) while still getting the *content* right — so this parser
+    matches case-insensitively and maps the match back to its canonical
+    FIELD_KEYS spelling for the output dict key. Longest-key-first so no label
+    is a prefix-match of another (e.g. "Bill To" would swallow "To").
     """
     keys_sorted = sorted(FIELD_KEYS, key=len, reverse=True)
-    pattern = re.compile(r"(" + "|".join(re.escape(k) for k in keys_sorted) + r")\s*:\s*")
+    canonical = {k.lower(): k for k in FIELD_KEYS}
+    pattern = re.compile(r"(" + "|".join(re.escape(k) for k in keys_sorted) + r")\s*:\s*", re.IGNORECASE)
     matches = list(pattern.finditer(text))
     fields = {k: "" for k in FIELD_KEYS}
     for i, m in enumerate(matches):
-        key = m.group(1)
+        key = canonical[m.group(1).lower()]
         start = m.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         fields[key] = text[start:end].strip()

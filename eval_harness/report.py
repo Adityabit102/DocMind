@@ -206,6 +206,10 @@ def _donut_note(clean: dict) -> str:
     raw = ("&lt;s_menu&gt;&lt;s_nm&gt; INVOICE&lt;/s_nm&gt;&lt;s_discountprice&gt; "
            "-52445&lt;/s_discountprice&gt;&lt;s_price&gt; 2026-03-13&lt;/s_price&gt; "
            "… &lt;s_total_price&gt; $8829.12&lt;/s_total_price&gt;")
+    ocr_ref = ""
+    if "baseline_ocr" in clean and "layout_ocr+" in clean:
+        ocr_ref = (f"{clean['baseline_ocr']['field_accuracy']:.2f} / "
+                  f"{clean['layout_ocr+']['field_accuracy']:.2f}")
     zero_shot_p = (f'<p class="finding" style="border-left-color:#b07a5a;">'
                   f'<b>Donut VLM — ZERO-SHOT (evaluated, not fine-tuned): field accuracy {acc:.2f}.</b> '
                   "Reported as-is. Donut here is <code>donut-base-finetuned-cord-v2</code>, pretrained on "
@@ -213,7 +217,7 @@ def _donut_note(clean: dict) -> str:
                   "keys, e.g.:<br>"
                   f"<code>{raw}</code><br>"
                   f"{recall_txt} This is a <b>schema-mismatch</b> failure, not an OCR failure and not a "
-                  "broken eval (the same harness scores the OCR engines 0.99 / 0.89).</p>")
+                  f"broken eval (the same harness scores the OCR engines {ocr_ref}).</p>")
 
     ft_p = ""
     if "donut_finetuned" in clean:

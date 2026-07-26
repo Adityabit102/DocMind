@@ -15,14 +15,14 @@
     "trainable_pct": 0.26
   },
   "training": {
-    "n_train_examples": 90,
+    "n_train_examples": 120,
     "epochs_equiv": 3.0,
-    "steps": 270,
+    "steps": 360,
     "lr": 0.0003,
     "seed": 42,
     "device": "cpu",
-    "train_seconds": 422.6
+    "train_seconds": 477.7
   },
-  "final_train_loss": 0.011226311326026917,
+  "final_train_loss": 0.035598013550043106,
   "data_leakage_note": "training images rendered from seed=51 into vlm_module/data_donut_train/; the eval set (vlm_module/data/, seed=7) used by every VLM comparison in this project is entirely disjoint \u2014 zero image or field-value overlap."
 }

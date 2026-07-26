@@ -158,12 +158,33 @@ def evaluate_vlm(severities: list[float], limit: int | None, include_donut: bool
             row = " ".join(f"{n}={curves[kind][n][-1]['field_accuracy']}" for n in engines)
             print(f"[VLM] {kind:10s} sev={sev} -> {row}")
 
+    # Beyond-clean: an unseen document LAYOUT (never seen during Donut's
+    # fine-tune) — the VLM-side analogue of the LLM harness's distribution_shift
+    # set. Clean-only comparison (no degradation sweep on this small OOD set),
+    # mirroring how the LLM harness treats its special sets.
+    special_sets = {}
+    if include_donut_finetuned or include_donut:
+        try:
+            from vlm_module.eval_distribution_shift import run as run_ood
+
+            ood = run_ood(include_donut=include_donut, include_donut_finetuned=include_donut_finetuned)
+            special_sets["distribution_shift_unseen_layout"] = {
+                name: {"field_accuracy": s["exact_field_accuracy"], "doc_exact_match": s["doc_exact_match"],
+                      "f1": s["f1"]}
+                for name, s in ood.items()
+            }
+            print(f"[VLM] distribution_shift (unseen layout): " +
+                  " ".join(f"{n}={v['field_accuracy']}" for n, v in special_sets["distribution_shift_unseen_layout"].items()))
+        except Exception as exc:  # noqa: BLE001
+            special_sets["distribution_shift_error"] = str(exc)
+
     return {
         "engines": list(engines),
         "n_images": len(items),
         "severities": severities,
         "clean": clean,
         "degradation_curves": curves,
+        "special_sets": special_sets,
     }
 
 

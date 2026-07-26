@@ -5,7 +5,8 @@
     "Vendor": "Sunfield Grocers",
     "Bill To": "Liam Nakamura",
     "City": "Austin",
-    "Total": "$8829.12"
+    "Total": "$8829.12",
+    "_template": "twocol"
   },
   "form_001.png": {
     "Invoice No": "INV-57931",
@@ -13,7 +14,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Elena Osei",
     "City": "Portland",
-    "Total": "$7154.53"
+    "Total": "$7154.53",
+    "_template": "table"
   },
   "form_002.png": {
     "Invoice No": "INV-19156",
@@ -21,7 +23,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Ravi Osei",
     "City": "Austin",
-    "Total": "$9314.15"
+    "Total": "$9314.15",
+    "_template": "twocol"
   },
   "form_003.png": {
     "Invoice No": "INV-39260",
@@ -29,7 +32,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Liam Petrov",
     "City": "Accra",
-    "Total": "$6549.06"
+    "Total": "$6549.06",
+    "_template": "table"
   },
   "form_004.png": {
     "Invoice No": "INV-38977",
@@ -37,7 +41,8 @@
     "Vendor": "Acme Logistics",
     "Bill To": "Diego Haddad",
     "City": "Leeds",
-    "Total": "$8908.15"
+    "Total": "$8908.15",
+    "_template": "twocol"
   },
   "form_005.png": {
     "Invoice No": "INV-84830",
@@ -45,7 +50,8 @@
     "Vendor": "Sunfield Grocers",
     "Bill To": "Omar Nakamura",
     "City": "Accra",
-    "Total": "$9408.81"
+    "Total": "$9408.81",
+    "_template": "table"
   },
   "form_006.png": {
     "Invoice No": "INV-34624",
@@ -53,7 +59,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Priya Petrov",
     "City": "Portland",
-    "Total": "$3424.63"
+    "Total": "$3424.63",
+    "_template": "twocol"
   },
   "form_007.png": {
     "Invoice No": "INV-99181",
@@ -61,7 +68,8 @@
     "Vendor": "Blue Harbor Foods",
     "Bill To": "Noah Petrov",
     "City": "Turin",
-    "Total": "$5974.38"
+    "Total": "$5974.38",
+    "_template": "table"
   },
   "form_008.png": {
     "Invoice No": "INV-42561",
@@ -69,7 +77,8 @@
     "Vendor": "Acme Logistics",
     "Bill To": "Priya Petrov",
     "City": "Nagoya",
-    "Total": "$8654.63"
+    "Total": "$8654.63",
+    "_template": "twocol"
   },
   "form_009.png": {
     "Invoice No": "INV-55020",
@@ -77,7 +86,8 @@
     "Vendor": "Blue Harbor Foods",
     "Bill To": "Priya Nakamura",
     "City": "Accra",
-    "Total": "$6900.21"
+    "Total": "$6900.21",
+    "_template": "table"
   },
   "form_010.png": {
     "Invoice No": "INV-54833",
@@ -85,7 +95,8 @@
     "Vendor": "Meridian Analytics",
     "Bill To": "Liam Silva",
     "City": "Portland",
-    "Total": "$9193.73"
+    "Total": "$9193.73",
+    "_template": "twocol"
   },
   "form_011.png": {
     "Invoice No": "INV-51123",
@@ -93,7 +104,8 @@
     "Vendor": "Blue Harbor Foods",
     "Bill To": "Mia Petrov",
     "City": "Austin",
-    "Total": "$7524.08"
+    "Total": "$7524.08",
+    "_template": "table"
   },
   "form_012.png": {
     "Invoice No": "INV-22267",
@@ -101,7 +113,8 @@
     "Vendor": "Sunfield Grocers",
     "Bill To": "Priya Osei",
     "City": "Valencia",
-    "Total": "$5122.82"
+    "Total": "$5122.82",
+    "_template": "twocol"
   },
   "form_013.png": {
     "Invoice No": "INV-85752",
@@ -109,7 +122,8 @@
     "Vendor": "Meridian Analytics",
     "Bill To": "Diego Ahmed",
     "City": "Turin",
-    "Total": "$5735.02"
+    "Total": "$5735.02",
+    "_template": "table"
   },
   "form_014.png": {
     "Invoice No": "INV-70515",
@@ -117,7 +131,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Kenji Fischer",
     "City": "Portland",
-    "Total": "$3625.98"
+    "Total": "$3625.98",
+    "_template": "twocol"
   },
   "form_015.png": {
     "Invoice No": "INV-47674",
@@ -125,7 +140,8 @@
     "Vendor": "Acme Logistics",
     "Bill To": "Lena Haddad",
     "City": "Austin",
-    "Total": "$8184.10"
+    "Total": "$8184.10",
+    "_template": "table"
   },
   "form_016.png": {
     "Invoice No": "INV-31805",
@@ -133,7 +149,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Aisha Delgado",
     "City": "Austin",
-    "Total": "$7103.70"
+    "Total": "$7103.70",
+    "_template": "twocol"
   },
   "form_017.png": {
     "Invoice No": "INV-46493",
@@ -141,7 +158,8 @@
     "Vendor": "Blue Harbor Foods",
     "Bill To": "Lena Kowalski",
     "City": "Leeds",
-    "Total": "$1409.22"
+    "Total": "$1409.22",
+    "_template": "table"
   },
   "form_018.png": {
     "Invoice No": "INV-29830",
@@ -149,7 +167,8 @@
     "Vendor": "Acme Logistics",
     "Bill To": "Ava Fischer",
     "City": "Austin",
-    "Total": "$9702.23"
+    "Total": "$9702.23",
+    "_template": "twocol"
   },
   "form_019.png": {
     "Invoice No": "INV-44438",
@@ -157,7 +176,8 @@
     "Vendor": "Acme Logistics",
     "Bill To": "Ravi Okonkwo",
     "City": "Nagoya",
-    "Total": "$9328.40"
+    "Total": "$9328.40",
+    "_template": "table"
   },
   "form_020.png": {
     "Invoice No": "INV-26448",
@@ -165,7 +185,8 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Liam Fischer",
     "City": "Austin",
-    "Total": "$9213.50"
+    "Total": "$9213.50",
+    "_template": "twocol"
   },
   "form_021.png": {
     "Invoice No": "INV-62175",
@@ -173,7 +194,8 @@
     "Vendor": "Northwind Traders",
     "Bill To": "Mia Silva",
     "City": "Turin",
-    "Total": "$1069.24"
+    "Total": "$1069.24",
+    "_template": "table"
   },
   "form_022.png": {
     "Invoice No": "INV-18827",
@@ -181,7 +203,8 @@
     "Vendor": "Acme Logistics",
     "Bill To": "Kenji Rossi",
     "City": "Accra",
-    "Total": "$911.13"
+    "Total": "$911.13",
+    "_template": "twocol"
   },
   "form_023.png": {
     "Invoice No": "INV-10030",
@@ -189,6 +212,223 @@
     "Vendor": "Orbital Systems",
     "Bill To": "Kenji Rossi",
     "City": "Accra",
-    "Total": "$467.09"
+    "Total": "$467.09",
+    "_template": "table"
+  },
+  "form_024.png": {
+    "Invoice No": "INV-37256",
+    "Date": "2026-10-13",
+    "Vendor": "Acme Logistics",
+    "Bill To": "Aisha Rossi",
+    "City": "Accra",
+    "Total": "$6016.60",
+    "_template": "twocol"
+  },
+  "form_025.png": {
+    "Invoice No": "INV-26101",
+    "Date": "2026-02-28",
+    "Vendor": "Meridian Analytics",
+    "Bill To": "Noah Fischer",
+    "City": "Turin",
+    "Total": "$5159.10",
+    "_template": "table"
+  },
+  "form_026.png": {
+    "Invoice No": "INV-28889",
+    "Date": "2026-02-24",
+    "Vendor": "Blue Harbor Foods",
+    "Bill To": "Aisha Fischer",
+    "City": "Austin",
+    "Total": "$2695.66",
+    "_template": "twocol"
+  },
+  "form_027.png": {
+    "Invoice No": "INV-13027",
+    "Date": "2026-04-17",
+    "Vendor": "Blue Harbor Foods",
+    "Bill To": "Sofia Ahmed",
+    "City": "Accra",
+    "Total": "$493.97",
+    "_template": "table"
+  },
+  "form_028.png": {
+    "Invoice No": "INV-79220",
+    "Date": "2026-05-21",
+    "Vendor": "Northwind Traders",
+    "Bill To": "Aisha Okonkwo",
+    "City": "Nagoya",
+    "Total": "$2786.45",
+    "_template": "twocol"
+  },
+  "form_029.png": {
+    "Invoice No": "INV-39201",
+    "Date": "2026-09-18",
+    "Vendor": "Orbital Systems",
+    "Bill To": "Hana Silva",
+    "City": "Leeds",
+    "Total": "$3247.30",
+    "_template": "table"
+  },
+  "form_030.png": {
+    "Invoice No": "INV-62518",
+    "Date": "2026-12-26",
+    "Vendor": "Acme Logistics",
+    "Bill To": "Elena Okonkwo",
+    "City": "Turin",
+    "Total": "$5875.93",
+    "_template": "twocol"
+  },
+  "form_031.png": {
+    "Invoice No": "INV-13798",
+    "Date": "2026-01-26",
+    "Vendor": "Blue Harbor Foods",
+    "Bill To": "Mia Abebe",
+    "City": "Leeds",
+    "Total": "$9964.44",
+    "_template": "table"
+  },
+  "form_032.png": {
+    "Invoice No": "INV-68619",
+    "Date": "2026-12-12",
+    "Vendor": "Blue Harbor Foods",
+    "Bill To": "Priya Kowalski",
+    "City": "Portland",
+    "Total": "$3766.60",
+    "_template": "twocol"
+  },
+  "form_033.png": {
+    "Invoice No": "INV-35782",
+    "Date": "2026-06-07",
+    "Vendor": "Meridian Analytics",
+    "Bill To": "Ava Fischer",
+    "City": "Valencia",
+    "Total": "$5686.82",
+    "_template": "table"
+  },
+  "form_034.png": {
+    "Invoice No": "INV-21112",
+    "Date": "2026-11-04",
+    "Vendor": "Meridian Analytics",
+    "Bill To": "Elena Fischer",
+    "City": "Leeds",
+    "Total": "$7159.81",
+    "_template": "twocol"
+  },
+  "form_035.png": {
+    "Invoice No": "INV-53583",
+    "Date": "2026-02-26",
+    "Vendor": "Sunfield Grocers",
+    "Bill To": "Lena Fischer",
+    "City": "Turin",
+    "Total": "$1441.92",
+    "_template": "table"
+  },
+  "form_036.png": {
+    "Invoice No": "INV-30821",
+    "Date": "2026-03-05",
+    "Vendor": "Northwind Traders",
+    "Bill To": "Sofia Petrov",
+    "City": "Turin",
+    "Total": "$2444.78",
+    "_template": "twocol"
+  },
+  "form_037.png": {
+    "Invoice No": "INV-88101",
+    "Date": "2026-08-22",
+    "Vendor": "Blue Harbor Foods",
+    "Bill To": "Sofia Okonkwo",
+    "City": "Accra",
+    "Total": "$2196.02",
+    "_template": "table"
+  },
+  "form_038.png": {
+    "Invoice No": "INV-11866",
+    "Date": "2026-12-21",
+    "Vendor": "Northwind Traders",
+    "Bill To": "Sofia Haddad",
+    "City": "Austin",
+    "Total": "$3241.27",
+    "_template": "twocol"
+  },
+  "form_039.png": {
+    "Invoice No": "INV-13669",
+    "Date": "2026-05-07",
+    "Vendor": "Blue Harbor Foods",
+    "Bill To": "Marcus Novak",
+    "City": "Accra",
+    "Total": "$5391.33",
+    "_template": "table"
+  },
+  "form_040.png": {
+    "Invoice No": "INV-81349",
+    "Date": "2026-07-27",
+    "Vendor": "Acme Logistics",
+    "Bill To": "Liam Ahmed",
+    "City": "Nagoya",
+    "Total": "$7556.84",
+    "_template": "twocol"
+  },
+  "form_041.png": {
+    "Invoice No": "INV-86460",
+    "Date": "2026-09-14",
+    "Vendor": "Orbital Systems",
+    "Bill To": "Sofia Okonkwo",
+    "City": "Leeds",
+    "Total": "$8627.65",
+    "_template": "table"
+  },
+  "form_042.png": {
+    "Invoice No": "INV-12451",
+    "Date": "2026-08-25",
+    "Vendor": "Acme Logistics",
+    "Bill To": "Ava Novak",
+    "City": "Austin",
+    "Total": "$2504.22",
+    "_template": "twocol"
+  },
+  "form_043.png": {
+    "Invoice No": "INV-28554",
+    "Date": "2026-08-20",
+    "Vendor": "Sunfield Grocers",
+    "Bill To": "Kenji Okonkwo",
+    "City": "Portland",
+    "Total": "$5390.87",
+    "_template": "table"
+  },
+  "form_044.png": {
+    "Invoice No": "INV-77941",
+    "Date": "2026-09-18",
+    "Vendor": "Meridian Analytics",
+    "Bill To": "Kenji Okonkwo",
+    "City": "Portland",
+    "Total": "$4121.24",
+    "_template": "twocol"
+  },
+  "form_045.png": {
+    "Invoice No": "INV-46296",
+    "Date": "2026-01-25",
+    "Vendor": "Northwind Traders",
+    "Bill To": "Noah Okonkwo",
+    "City": "Portland",
+    "Total": "$1088.56",
+    "_template": "table"
+  },
+  "form_046.png": {
+    "Invoice No": "INV-52678",
+    "Date": "2026-10-17",
+    "Vendor": "Orbital Systems",
+    "Bill To": "Elena Ahmed",
+    "City": "Nagoya",
+    "Total": "$7461.65",
+    "_template": "twocol"
+  },
+  "form_047.png": {
+    "Invoice No": "INV-79898",
+    "Date": "2026-08-17",
+    "Vendor": "Acme Logistics",
+    "Bill To": "Aisha Okonkwo",
+    "City": "Leeds",
+    "Total": "$7382.17",
+    "_template": "table"
   }
 }

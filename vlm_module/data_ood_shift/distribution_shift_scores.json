@@ -1,0 +1,74 @@
+{
+  "baseline_ocr": {
+    "engine": "baseline_ocr",
+    "n_images": 24,
+    "n_fields": 144,
+    "exact_field_accuracy": 0.0,
+    "doc_exact_match": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "per_field_accuracy": {
+      "Invoice No": 0.0,
+      "Date": 0.0,
+      "Vendor": 0.0,
+      "Bill To": 0.0,
+      "City": 0.0,
+      "Total": 0.0
+    }
+  },
+  "layout_ocr+": {
+    "engine": "layout_ocr+",
+    "n_images": 24,
+    "n_fields": 144,
+    "exact_field_accuracy": 0.0,
+    "doc_exact_match": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "per_field_accuracy": {
+      "Invoice No": 0.0,
+      "Date": 0.0,
+      "Vendor": 0.0,
+      "Bill To": 0.0,
+      "City": 0.0,
+      "Total": 0.0
+    }
+  },
+  "donut_vlm": {
+    "engine": "donut_vlm",
+    "n_images": 24,
+    "n_fields": 144,
+    "exact_field_accuracy": 0.013888888888888888,
+    "doc_exact_match": 0.0,
+    "precision": 0.02564102564102564,
+    "recall": 0.029411764705882353,
+    "f1": 0.0273972602739726,
+    "per_field_accuracy": {
+      "Invoice No": 0.0,
+      "Date": 0.0,
+      "Vendor": 0.0,
+      "Bill To": 0.0,
+      "City": 0.0,
+      "Total": 0.08333333333333333
+    }
+  },
+  "donut_finetuned": {
+    "engine": "donut_finetuned",
+    "n_images": 24,
+    "n_fields": 144,
+    "exact_field_accuracy": 0.6180555555555556,
+    "doc_exact_match": 0.0,
+    "precision": 0.9270833333333334,
+    "recall": 0.6496350364963503,
+    "f1": 0.7639484978540773,
+    "per_field_accuracy": {
+      "Invoice No": 0.0,
+      "Date": 0.0,
+      "Vendor": 0.7083333333333334,
+      "Bill To": 1.0,
+      "City": 1.0,
+      "Total": 1.0
+    }
+  }
+}
